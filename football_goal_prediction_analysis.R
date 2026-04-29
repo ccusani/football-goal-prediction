@@ -18,6 +18,10 @@ set.seed(123)
 # -------------------------
 # 2. Data Preparation
 # -------------------------
+# Load dataset (file should be in the same directory as this script)
+allplayerdata <- read.csv("~/2021-2022 Football Player Stats.csv", sep=";", comment.char="#")
+
+
 df <- allplayerdata
 
 df <- df %>%
