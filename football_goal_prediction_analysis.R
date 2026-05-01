@@ -16,7 +16,9 @@ set.seed(123)
 # 2. Data Preparation
 # -------------------------
 # Load dataset (file should be in the same directory as this script)
-allplayerdata <- read.csv("~/2021-2022 Football Player Stats.csv", sep=";", comment.char="#")
+allplayerdata <- read.csv("2021-2022 Football Player Stats.csv",
+                          sep = ";",
+                          comment.char = "#")
 
 
 df <- allplayerdata
@@ -272,4 +274,5 @@ plot(df_ml$TotalGoals, gbm_cv_preds, pch = 16)
 abline(0, 1, col = "red")
 
 # Dispersion
-deviance(pois_fit) / df.residual(pois_fit)
+pois_model <- glm(TotalGoals ~ ., data = df_ml, family = poisson(link = "log"))
+deviance(pois_model) / df.residual(pois_model)
